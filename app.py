@@ -94,3 +94,22 @@ def resource_not_found(e):
 #  "status": "active",
 #  "credit": 100
 # }
+
+
+# {
+#   "username": {
+#     "S": "john@gmail.com"
+#   },
+#   "credit": {
+#     "N": "998"
+#   },
+#   "password": {
+#     "S": "123"
+#   },
+#   "status": {
+#     "S": "active"
+#   },
+#   "user_session": {
+#     "S": "b5d4dccb-3eec-4812-bc3d-a3697999ce7c"
+#   }
+# }

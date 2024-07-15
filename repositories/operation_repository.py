@@ -9,8 +9,8 @@ class UserRepository:
         self.dynamodb = boto3.resource('dynamodb')
         if os.environ.get('IS_OFFLINE'):
             self.dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
-        USERS_TABLE = os.environ['USERS_TABLE']
-        self.table = self.dynamodb.Table(USERS_TABLE)
+        OPERATION_TABLE = os.environ['OPERATION_TABLE']
+        self.table = self.dynamodb.Table(OPERATION_TABLE)
 
     def get_user(self, username):
         response = self.table.get_item(
