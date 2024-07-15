@@ -246,7 +246,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721069207904-2024-07-15T18:46:47.904Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721079092033-2024-07-15T21:31:32.033Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -269,14 +269,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM": {
+                  "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "2fOmn2+PRX24EAbls9GOHtMjVQnaiWoaqyBVKy9ceW0="
+                      "CodeSha256": "IclXHD3s5QPSAldPwCYXkW5KsRR/C9yqR1oi2QPg0hU="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -494,7 +494,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721069183038": {
+                  "ApiGatewayDeployment1721079069703": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -581,7 +581,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+                      "Ref": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -758,7 +758,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+                "versionLogicalId": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
               }
             },
             "resources": {
@@ -1047,7 +1047,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721069207904-2024-07-15T18:46:47.904Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721079092033-2024-07-15T21:31:32.033Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -1070,14 +1070,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM": {
+                  "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "2fOmn2+PRX24EAbls9GOHtMjVQnaiWoaqyBVKy9ceW0="
+                      "CodeSha256": "IclXHD3s5QPSAldPwCYXkW5KsRR/C9yqR1oi2QPg0hU="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -1295,7 +1295,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721069183038": {
+                  "ApiGatewayDeployment1721079069703": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -1382,7 +1382,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+                      "Ref": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -1559,7 +1559,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+                "versionLogicalId": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
               }
             },
             "resources": {
@@ -1849,7 +1849,7 @@
                   "S3Bucket": {
                     "Ref": "ServerlessDeploymentBucket"
                   },
-                  "S3Key": "serverless/trueNorth/dev/1721069207904-2024-07-15T18:46:47.904Z/trueNorth.zip"
+                  "S3Key": "serverless/trueNorth/dev/1721079092033-2024-07-15T21:31:32.033Z/trueNorth.zip"
                 },
                 "Handler": "wsgi_handler.handler",
                 "Runtime": "python3.12",
@@ -1872,14 +1872,14 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM": {
+            "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "2fOmn2+PRX24EAbls9GOHtMjVQnaiWoaqyBVKy9ceW0="
+                "CodeSha256": "IclXHD3s5QPSAldPwCYXkW5KsRR/C9yqR1oi2QPg0hU="
               }
             },
             "ApiGatewayRestApi": {
@@ -2097,7 +2097,7 @@
                 "ApiLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1721069183038": {
+            "ApiGatewayDeployment1721079069703": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -2184,7 +2184,7 @@
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+                "Ref": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
               },
               "Export": {
                 "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -2361,7 +2361,7 @@
           "timeout": 6,
           "runtime": "python3.12",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+          "versionLogicalId": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
         }
       },
       "resources": {
@@ -2432,12 +2432,12 @@
     "serviceProviderAwsCfStackName": "trueNorth-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:188565454233:stack/trueNorth-dev/41901190-42d6-11ef-b943-0ee7f8256beb",
     "serviceProviderAwsCfStackCreated": "2024-07-15T18:15:46.283Z",
-    "serviceProviderAwsCfStackUpdated": "2024-07-15T18:47:11.992Z",
+    "serviceProviderAwsCfStackUpdated": "2024-07-15T21:32:00.318Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ApiLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:188565454233:function:trueNorth-dev-api:17",
+        "OutputValue": "arn:aws:lambda:us-east-1:188565454233:function:trueNorth-dev-api:28",
         "Description": "Current Lambda function version",
         "ExportName": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
       },

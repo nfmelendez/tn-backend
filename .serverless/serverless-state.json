@@ -205,7 +205,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/trueNorth/dev/1721069207904-2024-07-15T18:46:47.904Z/trueNorth.zip"
+                "S3Key": "serverless/trueNorth/dev/1721079092033-2024-07-15T21:31:32.033Z/trueNorth.zip"
               },
               "Handler": "wsgi_handler.handler",
               "Runtime": "python3.12",
@@ -228,14 +228,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM": {
+          "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "2fOmn2+PRX24EAbls9GOHtMjVQnaiWoaqyBVKy9ceW0="
+              "CodeSha256": "IclXHD3s5QPSAldPwCYXkW5KsRR/C9yqR1oi2QPg0hU="
             }
           },
           "ApiGatewayRestApi": {
@@ -453,7 +453,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1721069183038": {
+          "ApiGatewayDeployment1721079069703": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -540,7 +540,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+              "Ref": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
             },
             "Export": {
               "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -727,7 +727,7 @@
         "timeout": 6,
         "runtime": "python3.12",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersionFBpElzAHn0FNtYKYJirYlJKXO5Q9ysUXO7kfVqQzM"
+        "versionLogicalId": "ApiLambdaVersionymYAgLGLwEj8v65fE1pGtz4Oj1FEoSi1zbFqCNbpbg"
       }
     },
     "resources": {
@@ -794,7 +794,7 @@
     "artifact": "/home/nfmelendez-linux/challanges/trueNorth/.serverless/trueNorth.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/trueNorth/dev/1721069207904-2024-07-15T18:46:47.904Z",
+    "artifactDirectoryName": "serverless/trueNorth/dev/1721079092033-2024-07-15T21:31:32.033Z",
     "artifact": "trueNorth.zip"
   }
 }

@@ -2,8 +2,10 @@ import os
 
 import boto3
 from flask import Flask, jsonify, make_response, request
-
 from flask_cors import CORS
+
+from  repositories.user_repository import UserRepository
+
 
 #CORS: https://medium.com/@ernestocullen/cors-7b3243577593
 app = Flask(__name__)
@@ -12,27 +14,40 @@ CORS(app)
 
 VERSION = 'v1'
 
+user_repo = UserRepository()
 
-dynamodb = boto3.resource('dynamodb')
-
-if os.environ.get('IS_OFFLINE'):
-    dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
-
-
-
-USERS_TABLE = os.environ['USERS_TABLE']
 
 @app.route(f'/{VERSION}/add', methods=['POST'])
 def add():
-    # Check if users ha credit or refuse
-    left = request.json.get('left')
-    right = request.json.get('right')
-    result = left + right
-    # Discount credits
-    # Register Operation
-    return jsonify(
-        {'result': result}
-    )
+    
+    # Ideally goes in the headers but custom headers needs an extra configuration with CORS.
+    username = request.json.get('App-Username')
+    session =  request.json.get('App-Session')
+
+    if user_repo.verify_session(username, session):
+        # Check if users ha credit or refuse
+        user = user_repo.get_user(username)
+        if 'credit' in user:
+            credit = user['credit']
+        else:
+            credit = 0
+
+        # TODO: fetch operation cost
+        opCost = 2
+        if credit >= opCost:
+            left = request.json.get('left')
+            right = request.json.get('right')
+            result = left + right
+            # substract credits
+            total = user_repo.substractCredit(username, opCost)
+            # Register Operation
+            return jsonify(
+                {'result': result, 'credit': total}
+            )
+        else:
+            return jsonify({'error': f'Credit not enough, credit {credit}, operation cost: {opCost}'}), 404    
+    else:
+       return jsonify({'error': f'Invalid session {session} for username {username}'}), 403 
 
 
 @app.route(f'/{VERSION}/user/login', methods=['POST'])
@@ -43,23 +58,16 @@ def login_user():
         return jsonify({'error': 'Please provide both "username" and "password"'}), 404
     
     try:
-        table = dynamodb.Table(USERS_TABLE)
-        
-        # Get the item from the table
-        response = table.get_item(
-            Key={
-                'username': username
-            }
-        )
 
-        item = response.get('Item')
+        item = user_repo.get_user(username)
 
         if item:
             #Password is not hashed, would be lot better to be hashed
             if item['password'] == password:
                 import uuid
                 session = str(uuid.uuid4())
-                # Session never expire or the user make it expire. But is better to add an automatic expiration in time. 
+                # Session never expire or the user make it expire. But is better to add an automatic expiration in time.
+                user_repo.update_session(username, session)
                 return jsonify({'username': username, 'session': session}), 200
             else:
                 # not authorize
@@ -83,5 +91,6 @@ def resource_not_found(e):
 # {
 #  "username": "john@gmail.com",
 #  "password": "123",
-#  "status": "active"
+#  "status": "active",
+#  "credit": 100
 # }
