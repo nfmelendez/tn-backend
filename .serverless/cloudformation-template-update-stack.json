@@ -193,7 +193,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/trueNorth/dev/1721146259775-2024-07-16T16:10:59.775Z/trueNorth.zip"
+          "S3Key": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z/trueNorth.zip"
         },
         "Handler": "wsgi_handler.handler",
         "Runtime": "python3.12",
@@ -219,14 +219,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionVIBmI6EGSCNMgbGeGVNtgJOwDMumGRiuUPPmdvxpY": {
+    "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "NZoj60BaROTPjOcl9pF8rBnjNukMWJVbk0tfJumjlWc="
+        "CodeSha256": "eJ0pZACctbUnQ3dsigA9nR6eHj3ah/qRIlGIORuRT5w="
       }
     },
     "ApiGatewayRestApi": {
@@ -444,7 +444,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1721146236517": {
+    "ApiGatewayDeployment1721166773763": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -583,7 +583,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionVIBmI6EGSCNMgbGeGVNtgJOwDMumGRiuUPPmdvxpY"
+        "Ref": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
       },
       "Export": {
         "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"

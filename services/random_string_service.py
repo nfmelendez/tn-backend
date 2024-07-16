@@ -33,5 +33,9 @@ class RandomStringService:
             headers=headers
             )
         self.request_counter += 1
-        print(response.text)
-        return response.text
+        resp_json = json.loads(response.text)
+
+        # 1. Should check if the the request is success or not, we asumme always success.
+        # 2. The request should have a timeout so this service doesn't depend on third=parties slow to respond.
+        r = resp_json['result']['random']['data']
+        return r

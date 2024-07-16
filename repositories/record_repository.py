@@ -35,3 +35,23 @@ class RecordRepository:
         }
 
         self.table.put_item(Item=item)
+
+
+    def record_data(self, limit, last_key):
+        if last_key is None:
+            response = self.table.scan(
+            Limit=limit
+            )
+        else:    
+            response = self.table.scan(
+                Limit=limit,
+                ExclusiveStartKey=last_key
+            )
+
+        items = response.get('Items', [])
+        last_evaluated_key = response.get('LastEvaluatedKey', None)
+
+        return {
+            'Items': items,
+            'LastEvaluatedKey': last_evaluated_key
+        }

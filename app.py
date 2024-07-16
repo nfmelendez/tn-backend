@@ -4,6 +4,7 @@ import boto3
 from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 import math
+import json
 
 from  repositories.user_repository import UserRepository
 from repositories.operation_repository import OperationRepository
@@ -172,6 +173,17 @@ def login_user():
         return jsonify({'error': f"An error occurred: {e}"}), 500
 
 
+@app.route(f'/{VERSION}/records', methods=['GET'])
+def get_record_data():
+    limit = int(request.args.get('limit', 10))
+    last_evaluated_key = request.args.get('lastKey', None)
+
+    if last_evaluated_key:
+        last_evaluated_key = json.loads(last_evaluated_key)
+
+    return jsonify(record_repo.record_data(limit, last_evaluated_key))
+
+ 
 
 @app.errorhandler(404)
 def resource_not_found(e):
