@@ -9,6 +9,7 @@ from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 # ○ username (email)
 # ○ password
 # ○ status (active, inactive)
+# ○ credit
 class UserRepository:
     def __init__(self):
         self.dynamodb = boto3.resource('dynamodb')

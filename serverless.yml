@@ -42,6 +42,7 @@ provider:
     USERS_TABLE: ${param:tableName}
     OPERATION_TABLE: ${param:operationTableName}
     RECORD_TABLE: ${param:recordTableName}
+    RANDOM_ORG_API_KEY: "7b533d99-e7c0-437a-a9bb-f219111d288d"
 
 functions:
   api:
