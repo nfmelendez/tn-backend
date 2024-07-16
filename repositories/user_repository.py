@@ -4,6 +4,11 @@ import os
 import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 
+# DATA STRUCTURE:
+# ○ id
+# ○ username (email)
+# ○ password
+# ○ status (active, inactive)
 class UserRepository:
     def __init__(self):
         self.dynamodb = boto3.resource('dynamodb')
@@ -55,5 +60,7 @@ class UserRepository:
             },
             ReturnValues="UPDATED_NEW"
         )
-        return response
+        updated_attributes = response.get('Attributes', {})
+        updated_credit = updated_attributes.get('credit', None)
+        return int(updated_credit)
         

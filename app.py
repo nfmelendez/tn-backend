@@ -5,9 +5,12 @@ from flask import Flask, jsonify, make_response, request
 from flask_cors import CORS
 
 from  repositories.user_repository import UserRepository
+from repositories.operation_repository import OperationRepository
+from repositories.record_repository import RecordRepository
 
-
+#SERVERLESS: https://github.com/serverless/serverless
 #CORS: https://medium.com/@ernestocullen/cors-7b3243577593
+
 app = Flask(__name__)
 
 CORS(app)
@@ -16,6 +19,9 @@ VERSION = 'v1'
 
 user_repo = UserRepository()
 
+operation_repo = OperationRepository()
+
+record_repo = RecordRepository()
 
 @app.route(f'/{VERSION}/add', methods=['POST'])
 def add():
@@ -23,6 +29,15 @@ def add():
     # Ideally goes in the headers but custom headers needs an extra configuration with CORS.
     username = request.json.get('App-Username')
     session =  request.json.get('App-Session')
+    operation_id = "addition"
+    left = request.json.get('left')
+    right = request.json.get('right')
+    def add2Number(op1, op2):
+        return op1 + op2
+    
+    return execute_operation(add2Number, operation_id, left, right, username, session)
+
+def execute_operation(strategy_func, operation_id, left, right, username, session):
 
     if user_repo.verify_session(username, session):
         # Check if users ha credit or refuse
@@ -32,15 +47,14 @@ def add():
         else:
             credit = 0
 
-        # TODO: fetch operation cost
-        opCost = 2
+        opCost = operation_repo.operation_cost_by_id(operation_id)
         if credit >= opCost:
-            left = request.json.get('left')
-            right = request.json.get('right')
-            result = left + right
+
+            result = strategy_func(left, right)
             # substract credits
             total = user_repo.substractCredit(username, opCost)
             # Register Operation
+            record_repo.register_operation(username, operation=operation_id, amount=opCost, user_balance=total, operation_response=result)
             return jsonify(
                 {'result': result, 'credit': total}
             )

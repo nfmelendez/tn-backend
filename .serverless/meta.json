@@ -17,7 +17,8 @@
               "default": {
                 "params": {
                   "tableName": "users-table-dev",
-                  "operationTableName": "operation-table-dev"
+                  "operationTableName": "operation-table-dev",
+                  "recordTableName": "record-table-dev"
                 }
               }
             },
@@ -58,6 +59,12 @@
                             "OperationTable",
                             "Arn"
                           ]
+                        },
+                        {
+                          "Fn::GetAtt": [
+                            "RecordTable",
+                            "Arn"
+                          ]
                         }
                       ]
                     }
@@ -66,7 +73,8 @@
               },
               "environment": {
                 "USERS_TABLE": "users-table-dev",
-                "OPERATION_TABLE": "operation-table-dev"
+                "OPERATION_TABLE": "operation-table-dev",
+                "RECORD_TABLE": "record-table-dev"
               },
               "stage": "dev",
               "region": "us-east-1",
@@ -230,6 +238,12 @@
                                       "OperationTable",
                                       "Arn"
                                     ]
+                                  },
+                                  {
+                                    "Fn::GetAtt": [
+                                      "RecordTable",
+                                      "Arn"
+                                    ]
                                   }
                                 ]
                               }
@@ -260,7 +274,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721081358342-2024-07-15T22:09:18.342Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721132836096-2024-07-16T12:27:16.096Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -270,7 +284,8 @@
                       "Environment": {
                         "Variables": {
                           "USERS_TABLE": "users-table-dev",
-                          "OPERATION_TABLE": "operation-table-dev"
+                          "OPERATION_TABLE": "operation-table-dev",
+                          "RECORD_TABLE": "record-table-dev"
                         }
                       },
                       "Role": {
@@ -284,14 +299,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A": {
+                  "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "eX5Xhk07MmvT1D3/VwuI/ujEiV4sCp1+LW2QjmdBfMI="
+                      "CodeSha256": "D0rpxwn268LAyGL36GROK0pPFGx9G4l3/WD9rb13X94="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -509,7 +524,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721081336836": {
+                  "ApiGatewayDeployment1721132813681": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -583,32 +598,12 @@
                       "TableName": "users-table-dev"
                     }
                   },
-                  "OperationTable": {
+                  "RecordTable": {
                     "Type": "AWS::DynamoDB::Table",
                     "Properties": {
                       "AttributeDefinitions": [
                         {
-                          "AttributeName": "id",
-                          "AttributeType": "S"
-                        },
-                        {
-                          "AttributeName": "operation_id",
-                          "AttributeType": "S"
-                        },
-                        {
                           "AttributeName": "username",
-                          "AttributeType": "S"
-                        },
-                        {
-                          "AttributeName": "amount",
-                          "AttributeType": "N"
-                        },
-                        {
-                          "AttributeName": "user_balance",
-                          "AttributeType": "N"
-                        },
-                        {
-                          "AttributeName": "operation_response",
                           "AttributeType": "S"
                         },
                         {
@@ -624,6 +619,28 @@
                         {
                           "AttributeName": "date",
                           "KeyType": "RANGE"
+                        }
+                      ],
+                      "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1
+                      },
+                      "TableName": "record-table-dev"
+                    }
+                  },
+                  "OperationTable": {
+                    "Type": "AWS::DynamoDB::Table",
+                    "Properties": {
+                      "AttributeDefinitions": [
+                        {
+                          "AttributeName": "id",
+                          "AttributeType": "S"
+                        }
+                      ],
+                      "KeySchema": [
+                        {
+                          "AttributeName": "id",
+                          "KeyType": "HASH"
                         }
                       ],
                       "ProvisionedThroughput": {
@@ -646,7 +663,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+                      "Ref": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -823,7 +840,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+                "versionLogicalId": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
               }
             },
             "resources": {
@@ -850,32 +867,12 @@
                     "TableName": "users-table-dev"
                   }
                 },
-                "OperationTable": {
+                "RecordTable": {
                   "Type": "AWS::DynamoDB::Table",
                   "Properties": {
                     "AttributeDefinitions": [
                       {
-                        "AttributeName": "id",
-                        "AttributeType": "S"
-                      },
-                      {
-                        "AttributeName": "operation_id",
-                        "AttributeType": "S"
-                      },
-                      {
                         "AttributeName": "username",
-                        "AttributeType": "S"
-                      },
-                      {
-                        "AttributeName": "amount",
-                        "AttributeType": "N"
-                      },
-                      {
-                        "AttributeName": "user_balance",
-                        "AttributeType": "N"
-                      },
-                      {
-                        "AttributeName": "operation_response",
                         "AttributeType": "S"
                       },
                       {
@@ -891,6 +888,28 @@
                       {
                         "AttributeName": "date",
                         "KeyType": "RANGE"
+                      }
+                    ],
+                    "ProvisionedThroughput": {
+                      "ReadCapacityUnits": 1,
+                      "WriteCapacityUnits": 1
+                    },
+                    "TableName": "record-table-dev"
+                  }
+                },
+                "OperationTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
                       }
                     ],
                     "ProvisionedThroughput": {
@@ -933,7 +952,8 @@
               "default": {
                 "params": {
                   "tableName": "users-table-dev",
-                  "operationTableName": "operation-table-dev"
+                  "operationTableName": "operation-table-dev",
+                  "recordTableName": "record-table-dev"
                 }
               }
             },
@@ -974,6 +994,12 @@
                             "OperationTable",
                             "Arn"
                           ]
+                        },
+                        {
+                          "Fn::GetAtt": [
+                            "RecordTable",
+                            "Arn"
+                          ]
                         }
                       ]
                     }
@@ -982,7 +1008,8 @@
               },
               "environment": {
                 "USERS_TABLE": "users-table-dev",
-                "OPERATION_TABLE": "operation-table-dev"
+                "OPERATION_TABLE": "operation-table-dev",
+                "RECORD_TABLE": "record-table-dev"
               },
               "stage": "dev",
               "region": "us-east-1",
@@ -1146,6 +1173,12 @@
                                       "OperationTable",
                                       "Arn"
                                     ]
+                                  },
+                                  {
+                                    "Fn::GetAtt": [
+                                      "RecordTable",
+                                      "Arn"
+                                    ]
                                   }
                                 ]
                               }
@@ -1176,7 +1209,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721081358342-2024-07-15T22:09:18.342Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721132836096-2024-07-16T12:27:16.096Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -1186,7 +1219,8 @@
                       "Environment": {
                         "Variables": {
                           "USERS_TABLE": "users-table-dev",
-                          "OPERATION_TABLE": "operation-table-dev"
+                          "OPERATION_TABLE": "operation-table-dev",
+                          "RECORD_TABLE": "record-table-dev"
                         }
                       },
                       "Role": {
@@ -1200,14 +1234,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A": {
+                  "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "eX5Xhk07MmvT1D3/VwuI/ujEiV4sCp1+LW2QjmdBfMI="
+                      "CodeSha256": "D0rpxwn268LAyGL36GROK0pPFGx9G4l3/WD9rb13X94="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -1425,7 +1459,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721081336836": {
+                  "ApiGatewayDeployment1721132813681": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -1499,32 +1533,12 @@
                       "TableName": "users-table-dev"
                     }
                   },
-                  "OperationTable": {
+                  "RecordTable": {
                     "Type": "AWS::DynamoDB::Table",
                     "Properties": {
                       "AttributeDefinitions": [
                         {
-                          "AttributeName": "id",
-                          "AttributeType": "S"
-                        },
-                        {
-                          "AttributeName": "operation_id",
-                          "AttributeType": "S"
-                        },
-                        {
                           "AttributeName": "username",
-                          "AttributeType": "S"
-                        },
-                        {
-                          "AttributeName": "amount",
-                          "AttributeType": "N"
-                        },
-                        {
-                          "AttributeName": "user_balance",
-                          "AttributeType": "N"
-                        },
-                        {
-                          "AttributeName": "operation_response",
                           "AttributeType": "S"
                         },
                         {
@@ -1540,6 +1554,28 @@
                         {
                           "AttributeName": "date",
                           "KeyType": "RANGE"
+                        }
+                      ],
+                      "ProvisionedThroughput": {
+                        "ReadCapacityUnits": 1,
+                        "WriteCapacityUnits": 1
+                      },
+                      "TableName": "record-table-dev"
+                    }
+                  },
+                  "OperationTable": {
+                    "Type": "AWS::DynamoDB::Table",
+                    "Properties": {
+                      "AttributeDefinitions": [
+                        {
+                          "AttributeName": "id",
+                          "AttributeType": "S"
+                        }
+                      ],
+                      "KeySchema": [
+                        {
+                          "AttributeName": "id",
+                          "KeyType": "HASH"
                         }
                       ],
                       "ProvisionedThroughput": {
@@ -1562,7 +1598,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+                      "Ref": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -1739,7 +1775,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+                "versionLogicalId": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
               }
             },
             "resources": {
@@ -1766,32 +1802,12 @@
                     "TableName": "users-table-dev"
                   }
                 },
-                "OperationTable": {
+                "RecordTable": {
                   "Type": "AWS::DynamoDB::Table",
                   "Properties": {
                     "AttributeDefinitions": [
                       {
-                        "AttributeName": "id",
-                        "AttributeType": "S"
-                      },
-                      {
-                        "AttributeName": "operation_id",
-                        "AttributeType": "S"
-                      },
-                      {
                         "AttributeName": "username",
-                        "AttributeType": "S"
-                      },
-                      {
-                        "AttributeName": "amount",
-                        "AttributeType": "N"
-                      },
-                      {
-                        "AttributeName": "user_balance",
-                        "AttributeType": "N"
-                      },
-                      {
-                        "AttributeName": "operation_response",
                         "AttributeType": "S"
                       },
                       {
@@ -1807,6 +1823,28 @@
                       {
                         "AttributeName": "date",
                         "KeyType": "RANGE"
+                      }
+                    ],
+                    "ProvisionedThroughput": {
+                      "ReadCapacityUnits": 1,
+                      "WriteCapacityUnits": 1
+                    },
+                    "TableName": "record-table-dev"
+                  }
+                },
+                "OperationTable": {
+                  "Type": "AWS::DynamoDB::Table",
+                  "Properties": {
+                    "AttributeDefinitions": [
+                      {
+                        "AttributeName": "id",
+                        "AttributeType": "S"
+                      }
+                    ],
+                    "KeySchema": [
+                      {
+                        "AttributeName": "id",
+                        "KeyType": "HASH"
                       }
                     ],
                     "ProvisionedThroughput": {
@@ -1850,7 +1888,8 @@
         "default": {
           "params": {
             "tableName": "users-table-dev",
-            "operationTableName": "operation-table-dev"
+            "operationTableName": "operation-table-dev",
+            "recordTableName": "record-table-dev"
           }
         }
       },
@@ -1891,6 +1930,12 @@
                       "OperationTable",
                       "Arn"
                     ]
+                  },
+                  {
+                    "Fn::GetAtt": [
+                      "RecordTable",
+                      "Arn"
+                    ]
                   }
                 ]
               }
@@ -1899,7 +1944,8 @@
         },
         "environment": {
           "USERS_TABLE": "users-table-dev",
-          "OPERATION_TABLE": "operation-table-dev"
+          "OPERATION_TABLE": "operation-table-dev",
+          "RECORD_TABLE": "record-table-dev"
         },
         "stage": "dev",
         "region": "us-east-1",
@@ -2063,6 +2109,12 @@
                                 "OperationTable",
                                 "Arn"
                               ]
+                            },
+                            {
+                              "Fn::GetAtt": [
+                                "RecordTable",
+                                "Arn"
+                              ]
                             }
                           ]
                         }
@@ -2093,7 +2145,7 @@
                   "S3Bucket": {
                     "Ref": "ServerlessDeploymentBucket"
                   },
-                  "S3Key": "serverless/trueNorth/dev/1721081358342-2024-07-15T22:09:18.342Z/trueNorth.zip"
+                  "S3Key": "serverless/trueNorth/dev/1721132836096-2024-07-16T12:27:16.096Z/trueNorth.zip"
                 },
                 "Handler": "wsgi_handler.handler",
                 "Runtime": "python3.12",
@@ -2103,7 +2155,8 @@
                 "Environment": {
                   "Variables": {
                     "USERS_TABLE": "users-table-dev",
-                    "OPERATION_TABLE": "operation-table-dev"
+                    "OPERATION_TABLE": "operation-table-dev",
+                    "RECORD_TABLE": "record-table-dev"
                   }
                 },
                 "Role": {
@@ -2117,14 +2170,14 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A": {
+            "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "eX5Xhk07MmvT1D3/VwuI/ujEiV4sCp1+LW2QjmdBfMI="
+                "CodeSha256": "D0rpxwn268LAyGL36GROK0pPFGx9G4l3/WD9rb13X94="
               }
             },
             "ApiGatewayRestApi": {
@@ -2342,7 +2395,7 @@
                 "ApiLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1721081336836": {
+            "ApiGatewayDeployment1721132813681": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -2416,32 +2469,12 @@
                 "TableName": "users-table-dev"
               }
             },
-            "OperationTable": {
+            "RecordTable": {
               "Type": "AWS::DynamoDB::Table",
               "Properties": {
                 "AttributeDefinitions": [
                   {
-                    "AttributeName": "id",
-                    "AttributeType": "S"
-                  },
-                  {
-                    "AttributeName": "operation_id",
-                    "AttributeType": "S"
-                  },
-                  {
                     "AttributeName": "username",
-                    "AttributeType": "S"
-                  },
-                  {
-                    "AttributeName": "amount",
-                    "AttributeType": "N"
-                  },
-                  {
-                    "AttributeName": "user_balance",
-                    "AttributeType": "N"
-                  },
-                  {
-                    "AttributeName": "operation_response",
                     "AttributeType": "S"
                   },
                   {
@@ -2457,6 +2490,28 @@
                   {
                     "AttributeName": "date",
                     "KeyType": "RANGE"
+                  }
+                ],
+                "ProvisionedThroughput": {
+                  "ReadCapacityUnits": 1,
+                  "WriteCapacityUnits": 1
+                },
+                "TableName": "record-table-dev"
+              }
+            },
+            "OperationTable": {
+              "Type": "AWS::DynamoDB::Table",
+              "Properties": {
+                "AttributeDefinitions": [
+                  {
+                    "AttributeName": "id",
+                    "AttributeType": "S"
+                  }
+                ],
+                "KeySchema": [
+                  {
+                    "AttributeName": "id",
+                    "KeyType": "HASH"
                   }
                 ],
                 "ProvisionedThroughput": {
@@ -2479,7 +2534,7 @@
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+                "Ref": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
               },
               "Export": {
                 "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -2656,7 +2711,7 @@
           "timeout": 6,
           "runtime": "python3.12",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersion21ELooYFapaiu44n9TAdZUZGPoZaRbzdzbueuxY21A"
+          "versionLogicalId": "ApiLambdaVersion6Pt3oBRksidaXQrY8xr4CReb5ECrtFaP5hw9p3ACT8"
         }
       },
       "resources": {
@@ -2683,32 +2738,12 @@
               "TableName": "users-table-dev"
             }
           },
-          "OperationTable": {
+          "RecordTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
               "AttributeDefinitions": [
                 {
-                  "AttributeName": "id",
-                  "AttributeType": "S"
-                },
-                {
-                  "AttributeName": "operation_id",
-                  "AttributeType": "S"
-                },
-                {
                   "AttributeName": "username",
-                  "AttributeType": "S"
-                },
-                {
-                  "AttributeName": "amount",
-                  "AttributeType": "N"
-                },
-                {
-                  "AttributeName": "user_balance",
-                  "AttributeType": "N"
-                },
-                {
-                  "AttributeName": "operation_response",
                   "AttributeType": "S"
                 },
                 {
@@ -2730,6 +2765,28 @@
                 "ReadCapacityUnits": 1,
                 "WriteCapacityUnits": 1
               },
+              "TableName": "record-table-dev"
+            }
+          },
+          "OperationTable": {
+            "Type": "AWS::DynamoDB::Table",
+            "Properties": {
+              "AttributeDefinitions": [
+                {
+                  "AttributeName": "id",
+                  "AttributeType": "S"
+                }
+              ],
+              "KeySchema": [
+                {
+                  "AttributeName": "id",
+                  "KeyType": "HASH"
+                }
+              ],
+              "ProvisionedThroughput": {
+                "ReadCapacityUnits": 1,
+                "WriteCapacityUnits": 1
+              },
               "TableName": "operation-table-dev"
             }
           }
@@ -2737,21 +2794,18 @@
         "Outputs": {}
       }
     },
-    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: nfmelendez\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: truenorth\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: trueNorth\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n      operationTableName: \"operation-table-${sls:stage}\"\n\nplugins:\n  - serverless-wsgi\n  - serverless-python-requirements\n\ncustom:\n  wsgi:\n    app: app.app\n\nprovider:\n  name: aws\n  runtime: python3.12\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n            - Fn::GetAtt: [OperationTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n    OPERATION_TABLE: ${param:operationTableName}\n\nfunctions:\n  api:\n    handler: wsgi_handler.handler\n    events:\n      - http:\n          path: /\n          method: ANY\n          cors: true\n      - http:\n          path: /{proxy+}\n          method: ANY\n          cors: true\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:tableName}\n    OperationTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n          - AttributeName: operation_id\n            AttributeType: S\n          - AttributeName: username\n            AttributeType: S\n          - AttributeName: amount\n            AttributeType: N\n          - AttributeName: user_balance\n            AttributeType: N\n          - AttributeName: operation_response\n            AttributeType: S\n          - AttributeName: date\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n          - AttributeName: date\n            KeyType: RANGE\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:operationTableName}\n",
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: nfmelendez\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: truenorth\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: trueNorth\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n      operationTableName: \"operation-table-${sls:stage}\"\n      recordTableName: \"record-table-${sls:stage}\"\n\nplugins:\n  - serverless-wsgi\n  - serverless-python-requirements\n\ncustom:\n  wsgi:\n    app: app.app\n\nprovider:\n  name: aws\n  runtime: python3.12\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n            - Fn::GetAtt: [OperationTable, Arn]\n            - Fn::GetAtt: [RecordTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n    OPERATION_TABLE: ${param:operationTableName}\n    RECORD_TABLE: ${param:recordTableName}\n\nfunctions:\n  api:\n    handler: wsgi_handler.handler\n    events:\n      - http:\n          path: /\n          method: ANY\n          cors: true\n      - http:\n          path: /{proxy+}\n          method: ANY\n          cors: true\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:tableName}\n    RecordTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n          - AttributeName: date\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n          - AttributeName: date\n            KeyType: RANGE\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:recordTableName}\n    OperationTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:operationTableName}",
     "command": [
       "deploy"
     ],
     "options": {},
-    "error": {
-      "message": "An error occurred: OperationTable - Resource handler returned message: \"Number of attributes in KeySchema does not exactly match number of attributes defined in AttributeDefinitions\" (RequestToken: 24e78e3c-a097-fcbf-3f28-9e67083e43d4, HandlerErrorCode: InvalidRequest).",
-      "stack": "ServerlessError2: An error occurred: OperationTable - Resource handler returned message: \"Number of attributes in KeySchema does not exactly match number of attributes defined in AttributeDefinitions\" (RequestToken: 24e78e3c-a097-fcbf-3f28-9e67083e43d4, HandlerErrorCode: InvalidRequest).\n    at file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:660:830\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async AwsDeploy.update (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:660:25421)\n    at async aws:deploy:deploy:updateStack (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:671:4783)\n    at async PluginManager.runHooks (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:9296)\n    at async PluginManager.invoke (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:10066)\n    at async PluginManager.spawn (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:10427)\n    at async PluginManager.runHooks (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:9296)\n    at async PluginManager.invoke (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:10066)\n    at async PluginManager.run (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:854:10790)\n    at async Serverless.run (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:861:10442)\n    at async runFramework (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:909:2314)\n    at async route (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:920:16046)\n    at async Object.run2 [as run] (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:920:16444)\n    at async run3 (file:///home/nfmelendez-linux/.serverless/releases/4.1.12/package/dist/sf-core.js:920:17704)",
-      "code": "AWS_CLOUD_FORMATION_UPDATE_STACK_INTERNAL_DYNAMO_D_B_TABLE_CREATE_FAILED"
-    },
+    "error": null,
     "params": {
       "tableName": "users-table-dev",
-      "operationTableName": "operation-table-dev"
+      "operationTableName": "operation-table-dev",
+      "recordTableName": "record-table-dev"
     },
-    "machineId": "e5bf196e0baebd2bf46b323344fdb0a0",
+    "machineId": "735a2d867ba94b8292f17aa669aae952",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
     "orgId": "ca95791b-ac73-411d-aaaa-8179fb4c7445",
@@ -2780,10 +2834,28 @@
     "serviceProviderAwsAccountId": "188565454233",
     "versionSf": "4.1.12",
     "serviceProviderAwsCfStackName": "trueNorth-dev",
-    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:188565454233:stack/trueNorth-dev/e2e15160-42f6-11ef-bd3e-0afff92d27e1",
-    "serviceProviderAwsCfStackCreated": "2024-07-15T22:09:20.812Z",
-    "serviceProviderAwsCfStackUpdated": "2024-07-15T22:10:13.807Z",
-    "serviceProviderAwsCfStackStatus": "UPDATE_ROLLBACK_IN_PROGRESS",
-    "serviceProviderAwsCfStackOutputs": null
+    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:188565454233:stack/trueNorth-dev/0f046fe0-436d-11ef-8051-0e72b5009105",
+    "serviceProviderAwsCfStackCreated": "2024-07-16T12:15:15.495Z",
+    "serviceProviderAwsCfStackUpdated": "2024-07-16T12:27:42.169Z",
+    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
+    "serviceProviderAwsCfStackOutputs": [
+      {
+        "OutputKey": "ApiLambdaFunctionQualifiedArn",
+        "OutputValue": "arn:aws:lambda:us-east-1:188565454233:function:trueNorth-dev-api:40",
+        "Description": "Current Lambda function version",
+        "ExportName": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
+      },
+      {
+        "OutputKey": "ServiceEndpoint",
+        "OutputValue": "https://avsvppatj3.execute-api.us-east-1.amazonaws.com/dev",
+        "Description": "URL of the service endpoint",
+        "ExportName": "sls-trueNorth-dev-ServiceEndpoint"
+      },
+      {
+        "OutputKey": "ServerlessDeploymentBucketName",
+        "OutputValue": "truenorth-dev-serverlessdeploymentbucket-fhht9z4ptezm",
+        "ExportName": "sls-trueNorth-dev-ServerlessDeploymentBucketName"
+      }
+    ]
   }
 }
