@@ -3,12 +3,21 @@
 
 Backend that handle login and the different operations to support the calculator functionality and random string generation via a random.org third-party.
 
+## Technologies
+- AWS lambda with Python 3.12
+- AWS Dynamodb
+- Serverless framework
+- Flask
+
+
+
+
 ## Usage
 
 ### Prerequisites
 
 - It uses serverless framework.
-- You need to have `Python3.8` installed locally.
+- You need to have `Python3.12` installed locally, pyenv is recommended
 
 
 ### Deployment
@@ -49,8 +58,21 @@ It also create the dynamodb tables
 
 ### Testing
 
-For testing run
+For testing setup with pyenv  `Python 3.12.2` and run
 
 ```
-test
+ python -m pytest
+```
+
+Result should be:
+
+```
+================================================================================================================================= test session starts ==================================================================================================================================
+platform linux -- Python 3.12.2, pytest-8.2.2, pluggy-1.5.0
+rootdir: /home/nfmelendez-linux/challanges/trueNorth
+collected 3 items                                                                                                                                                                                                                                                                      
+
+test/test_endpoints.py ...                                                                                                                                                                                                                                                       [100%]
+
+================================================================================================================================== 3 passed in 0.36s ===================================================================================================================================
 ```
