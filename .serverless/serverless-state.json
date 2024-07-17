@@ -48,7 +48,8 @@
         "USERS_TABLE": "users-table-dev",
         "OPERATION_TABLE": "operation-table-dev",
         "RECORD_TABLE": "record-table-dev",
-        "RANDOM_ORG_API_KEY": "7b533d99-e7c0-437a-a9bb-f219111d288d"
+        "RANDOM_ORG_API_KEY": "7b533d99-e7c0-437a-a9bb-f219111d288d",
+        "CURRENT_ENV": "PRODUCTION"
       },
       "stage": "dev",
       "region": "us-east-1",
@@ -220,7 +221,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z/trueNorth.zip"
+                "S3Key": "serverless/trueNorth/dev/1721222378137-2024-07-17T13:19:38.137Z/trueNorth.zip"
               },
               "Handler": "wsgi_handler.handler",
               "Runtime": "python3.12",
@@ -232,7 +233,8 @@
                   "USERS_TABLE": "users-table-dev",
                   "OPERATION_TABLE": "operation-table-dev",
                   "RECORD_TABLE": "record-table-dev",
-                  "RANDOM_ORG_API_KEY": "7b533d99-e7c0-437a-a9bb-f219111d288d"
+                  "RANDOM_ORG_API_KEY": "7b533d99-e7c0-437a-a9bb-f219111d288d",
+                  "CURRENT_ENV": "PRODUCTION"
                 }
               },
               "Role": {
@@ -246,14 +248,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ": {
+          "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "eJ0pZACctbUnQ3dsigA9nR6eHj3ah/qRIlGIORuRT5w="
+              "CodeSha256": "mD8aWbxMtb7FTpqaSv1VjGJl3stJ+UhPPzlhH1Xuc9M="
             }
           },
           "ApiGatewayRestApi": {
@@ -471,7 +473,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1721166773763": {
+          "ApiGatewayDeployment1721222353771": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -610,7 +612,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+              "Ref": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
             },
             "Export": {
               "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -797,7 +799,7 @@
         "timeout": 6,
         "runtime": "python3.12",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+        "versionLogicalId": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
       }
     },
     "resources": {
@@ -918,7 +920,7 @@
     "artifact": "/home/nfmelendez-linux/challanges/trueNorth/.serverless/trueNorth.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z",
+    "artifactDirectoryName": "serverless/trueNorth/dev/1721222378137-2024-07-17T13:19:38.137Z",
     "artifact": "trueNorth.zip"
   }
 }

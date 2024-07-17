@@ -75,7 +75,8 @@
                 "USERS_TABLE": "users-table-dev",
                 "OPERATION_TABLE": "operation-table-dev",
                 "RECORD_TABLE": "record-table-dev",
-                "RANDOM_ORG_API_KEY": "<REDACTED>"
+                "RANDOM_ORG_API_KEY": "<REDACTED>",
+                "CURRENT_ENV": "PRODUCTION"
               },
               "stage": "dev",
               "region": "us-east-1",
@@ -275,7 +276,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721222378137-2024-07-17T13:19:38.137Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -287,7 +288,8 @@
                           "USERS_TABLE": "users-table-dev",
                           "OPERATION_TABLE": "operation-table-dev",
                           "RECORD_TABLE": "record-table-dev",
-                          "RANDOM_ORG_API_KEY": "<REDACTED>"
+                          "RANDOM_ORG_API_KEY": "<REDACTED>",
+                          "CURRENT_ENV": "PRODUCTION"
                         }
                       },
                       "Role": {
@@ -301,14 +303,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ": {
+                  "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "eJ0pZACctbUnQ3dsigA9nR6eHj3ah/qRIlGIORuRT5w="
+                      "CodeSha256": "mD8aWbxMtb7FTpqaSv1VjGJl3stJ+UhPPzlhH1Xuc9M="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -526,7 +528,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721166773763": {
+                  "ApiGatewayDeployment1721222353771": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -665,7 +667,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+                      "Ref": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -842,7 +844,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+                "versionLogicalId": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
               }
             },
             "resources": {
@@ -1012,7 +1014,8 @@
                 "USERS_TABLE": "users-table-dev",
                 "OPERATION_TABLE": "operation-table-dev",
                 "RECORD_TABLE": "record-table-dev",
-                "RANDOM_ORG_API_KEY": "<REDACTED>"
+                "RANDOM_ORG_API_KEY": "<REDACTED>",
+                "CURRENT_ENV": "PRODUCTION"
               },
               "stage": "dev",
               "region": "us-east-1",
@@ -1212,7 +1215,7 @@
                         "S3Bucket": {
                           "Ref": "ServerlessDeploymentBucket"
                         },
-                        "S3Key": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z/trueNorth.zip"
+                        "S3Key": "serverless/trueNorth/dev/1721222378137-2024-07-17T13:19:38.137Z/trueNorth.zip"
                       },
                       "Handler": "wsgi_handler.handler",
                       "Runtime": "python3.12",
@@ -1224,7 +1227,8 @@
                           "USERS_TABLE": "users-table-dev",
                           "OPERATION_TABLE": "operation-table-dev",
                           "RECORD_TABLE": "record-table-dev",
-                          "RANDOM_ORG_API_KEY": "<REDACTED>"
+                          "RANDOM_ORG_API_KEY": "<REDACTED>",
+                          "CURRENT_ENV": "PRODUCTION"
                         }
                       },
                       "Role": {
@@ -1238,14 +1242,14 @@
                       "ApiLogGroup"
                     ]
                   },
-                  "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ": {
+                  "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "ApiLambdaFunction"
                       },
-                      "CodeSha256": "eJ0pZACctbUnQ3dsigA9nR6eHj3ah/qRIlGIORuRT5w="
+                      "CodeSha256": "mD8aWbxMtb7FTpqaSv1VjGJl3stJ+UhPPzlhH1Xuc9M="
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -1463,7 +1467,7 @@
                       "ApiLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1721166773763": {
+                  "ApiGatewayDeployment1721222353771": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -1602,7 +1606,7 @@
                   "ApiLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+                      "Ref": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
                     },
                     "Export": {
                       "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -1779,7 +1783,7 @@
                 "timeout": 6,
                 "runtime": "python3.12",
                 "vpc": {},
-                "versionLogicalId": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+                "versionLogicalId": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
               }
             },
             "resources": {
@@ -1950,7 +1954,8 @@
           "USERS_TABLE": "users-table-dev",
           "OPERATION_TABLE": "operation-table-dev",
           "RECORD_TABLE": "record-table-dev",
-          "RANDOM_ORG_API_KEY": "<REDACTED>"
+          "RANDOM_ORG_API_KEY": "<REDACTED>",
+          "CURRENT_ENV": "PRODUCTION"
         },
         "stage": "dev",
         "region": "us-east-1",
@@ -2150,7 +2155,7 @@
                   "S3Bucket": {
                     "Ref": "ServerlessDeploymentBucket"
                   },
-                  "S3Key": "serverless/trueNorth/dev/1721166795569-2024-07-16T21:53:15.569Z/trueNorth.zip"
+                  "S3Key": "serverless/trueNorth/dev/1721222378137-2024-07-17T13:19:38.137Z/trueNorth.zip"
                 },
                 "Handler": "wsgi_handler.handler",
                 "Runtime": "python3.12",
@@ -2162,7 +2167,8 @@
                     "USERS_TABLE": "users-table-dev",
                     "OPERATION_TABLE": "operation-table-dev",
                     "RECORD_TABLE": "record-table-dev",
-                    "RANDOM_ORG_API_KEY": "<REDACTED>"
+                    "RANDOM_ORG_API_KEY": "<REDACTED>",
+                    "CURRENT_ENV": "PRODUCTION"
                   }
                 },
                 "Role": {
@@ -2176,14 +2182,14 @@
                 "ApiLogGroup"
               ]
             },
-            "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ": {
+            "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "ApiLambdaFunction"
                 },
-                "CodeSha256": "eJ0pZACctbUnQ3dsigA9nR6eHj3ah/qRIlGIORuRT5w="
+                "CodeSha256": "mD8aWbxMtb7FTpqaSv1VjGJl3stJ+UhPPzlhH1Xuc9M="
               }
             },
             "ApiGatewayRestApi": {
@@ -2401,7 +2407,7 @@
                 "ApiLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1721166773763": {
+            "ApiGatewayDeployment1721222353771": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -2540,7 +2546,7 @@
             "ApiLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+                "Ref": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
               },
               "Export": {
                 "Name": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
@@ -2717,7 +2723,7 @@
           "timeout": 6,
           "runtime": "python3.12",
           "vpc": {},
-          "versionLogicalId": "ApiLambdaVersion39fydwH0UYUwAiJ2OlPSVERtvo7levbr7efRlnYsQ"
+          "versionLogicalId": "ApiLambdaVersiono7PgOBeAKaMVDLXXretftuNPxes3u6TR3Rhm56zso"
         }
       },
       "resources": {
@@ -2800,7 +2806,7 @@
         "Outputs": {}
       }
     },
-    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: nfmelendez\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: truenorth\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: trueNorth\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n      operationTableName: \"operation-table-${sls:stage}\"\n      recordTableName: \"record-table-${sls:stage}\"\n\nplugins:\n  - serverless-wsgi\n  - serverless-python-requirements\n\ncustom:\n  wsgi:\n    app: app.app\n\nprovider:\n  name: aws\n  runtime: python3.12\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n            - Fn::GetAtt: [OperationTable, Arn]\n            - Fn::GetAtt: [RecordTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n    OPERATION_TABLE: ${param:operationTableName}\n    RECORD_TABLE: ${param:recordTableName}\n    RANDOM_ORG_API_KEY: \"7b533d99-e7c0-437a-a9bb-f219111d288d\"\n\nfunctions:\n  api:\n    handler: wsgi_handler.handler\n    events:\n      - http:\n          path: /\n          method: ANY\n          cors: true\n      - http:\n          path: /{proxy+}\n          method: ANY\n          cors: true\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:tableName}\n    RecordTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n          - AttributeName: date\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n          - AttributeName: date\n            KeyType: RANGE\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:recordTableName}\n    OperationTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:operationTableName}",
+    "serviceRawFile": "# \"org\" ensures this Service is used with the correct Serverless Framework Access Key.\norg: nfmelendez\n# \"app\" enables Serverless Framework Dashboard features and sharing them with other Services.\napp: truenorth\n# \"service\" is the name of this project. This will also be added to your AWS resource names.\nservice: trueNorth\n\nstages:\n  default:\n    params:\n      tableName: \"users-table-${sls:stage}\"\n      operationTableName: \"operation-table-${sls:stage}\"\n      recordTableName: \"record-table-${sls:stage}\"\n\nplugins:\n  - serverless-wsgi\n  - serverless-python-requirements\n\ncustom:\n  wsgi:\n    app: app.app\n\nprovider:\n  name: aws\n  runtime: python3.12\n  iam:\n    role:\n      statements:\n        - Effect: Allow\n          Action:\n            - dynamodb:Query\n            - dynamodb:Scan\n            - dynamodb:GetItem\n            - dynamodb:PutItem\n            - dynamodb:UpdateItem\n            - dynamodb:DeleteItem\n          Resource:\n            - Fn::GetAtt: [UsersTable, Arn]\n            - Fn::GetAtt: [OperationTable, Arn]\n            - Fn::GetAtt: [RecordTable, Arn]\n  environment:\n    USERS_TABLE: ${param:tableName}\n    OPERATION_TABLE: ${param:operationTableName}\n    RECORD_TABLE: ${param:recordTableName}\n    RANDOM_ORG_API_KEY: \"7b533d99-e7c0-437a-a9bb-f219111d288d\"\n    CURRENT_ENV: \"PRODUCTION\"\n\nfunctions:\n  api:\n    handler: wsgi_handler.handler\n    events:\n      - http:\n          path: /\n          method: ANY\n          cors: true\n      - http:\n          path: /{proxy+}\n          method: ANY\n          cors: true\n\nresources:\n  Resources:\n    UsersTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:tableName}\n    RecordTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: username\n            AttributeType: S\n          - AttributeName: date\n            AttributeType: S\n        KeySchema:\n          - AttributeName: username\n            KeyType: HASH\n          - AttributeName: date\n            KeyType: RANGE\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:recordTableName}\n    OperationTable:\n      Type: AWS::DynamoDB::Table\n      Properties:\n        AttributeDefinitions:\n          - AttributeName: id\n            AttributeType: S\n        KeySchema:\n          - AttributeName: id\n            KeyType: HASH\n        ProvisionedThroughput:\n          ReadCapacityUnits: 1\n          WriteCapacityUnits: 1\n        TableName: ${param:operationTableName}",
     "command": [
       "deploy"
     ],
@@ -2842,12 +2848,12 @@
     "serviceProviderAwsCfStackName": "trueNorth-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:188565454233:stack/trueNorth-dev/0f046fe0-436d-11ef-8051-0e72b5009105",
     "serviceProviderAwsCfStackCreated": "2024-07-16T12:15:15.495Z",
-    "serviceProviderAwsCfStackUpdated": "2024-07-16T21:53:42.087Z",
+    "serviceProviderAwsCfStackUpdated": "2024-07-17T13:20:04.348Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "ApiLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:188565454233:function:trueNorth-dev-api:54",
+        "OutputValue": "arn:aws:lambda:us-east-1:188565454233:function:trueNorth-dev-api:57",
         "Description": "Current Lambda function version",
         "ExportName": "sls-trueNorth-dev-ApiLambdaFunctionQualifiedArn"
       },
